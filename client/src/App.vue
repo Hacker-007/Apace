@@ -26,6 +26,6 @@ export default {
 
 #app {
   font-family: "Poppins", sans-serif;
-  background-image: linear-gradient(to bottom right, #888888, #BEBEBE);
+  background-image: linear-gradient(to bottom right, #171717, #1B1B1B, #1D1D1D, #1E1E1E, #000000);
 }
 </style>

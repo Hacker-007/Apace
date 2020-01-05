@@ -1,12 +1,12 @@
 <template>
   <nav>
     <div class="logo">
-      <h1>apace</h1>
+      <h1>Apace</h1>
     </div>
     <ul class="links">
-      <li><router-link to="/">about</router-link></li>
-      <li><router-link to="/">vehicles</router-link></li>
-      <li><router-link to="/">contact</router-link></li>
+      <li><router-link to="/">About</router-link></li>
+      <li><router-link to="/">Vehicles</router-link></li>
+      <li><router-link to="/">Contact</router-link></li>
     </ul>
   </nav>
 </template>
@@ -23,14 +23,16 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3rem;
-  padding-bottom: 0;
-  height: 90px;
+  padding: 2rem;
+}
+
+.logo {
+  color: #FFFFFF;
 }
 
 .links {
   list-style-type: none;
-  width: 605px;
+  width: 20%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -39,6 +41,6 @@ nav {
 a {
   text-decoration: none;
   cursor: pointer;
-  color: #E2E0E0;
+  color: #FFFFFF;
 }
 </style>
