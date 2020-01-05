@@ -4,9 +4,9 @@
       <h1>Apace</h1>
     </div>
     <ul class="links">
-      <li><router-link to="/">About</router-link></li>
-      <li><router-link to="/">Vehicles</router-link></li>
-      <li><router-link to="/">Contact</router-link></li>
+      <li><router-link to="/"><strong>About</strong></router-link></li>
+      <li><router-link to="/"><strong>Vehicles</strong></router-link></li>
+      <li><router-link to="/"><strong>Contact</strong></router-link></li>
     </ul>
   </nav>
 </template>
