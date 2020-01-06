@@ -34,7 +34,6 @@ nav {
   list-style-type: none;
   width: 20%;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
 }
 
