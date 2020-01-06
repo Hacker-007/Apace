@@ -1,21 +1,26 @@
 <template>
   <div class="carousel">
-    <div class="slide">
-      <div class="car">
-        <img :src="slides[slideIndex].image">
-        <h3 class="description">{{ slides[slideIndex].description }}</h3>
-      </div>
-      <div class="dots">
-        <span v-for="(slide, index) in this.slides" :key="index" class="dot" :class="{ active: (slideIndex == index) }" @click="show(index)"></span>
-      </div>
+    <div class="slides">
+      <carousel-item v-for="(slide, index) in slides" :key="index" :imageSrc="slide.image"></carousel-item>
+    </div>
+    <transition name="fade" mode="out-in">
+      <h3 :key="currentDescription" class="text">{{ currentDescription }}</h3>
+    </transition>
+    <div class="dots">
+      <span v-for="(slide, index) in this.slides" :key="index" class="dot" @click="show(index)"></span>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import CarouselItem from '@/components/CarouselItem.vue'
 
-@Component
+@Component({
+  components: {
+    CarouselItem
+  }
+})
 export default class Carousel extends Vue {
     slideIndex: number = 1;
     slides = [
@@ -32,25 +37,45 @@ export default class Carousel extends Vue {
         'description': 'SUV'
       }
     ];
+    currentDescription: string = this.slides[this.slideIndex].description;
 
     show (index: number) {
       this.slideIndex = index
+      this.currentDescription = this.slides[this.slideIndex].description
     }
 }
 </script>
 
 <style>
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all .3s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
 .carousel {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-contents: center;
+  overflow: hidden;
 }
 
-.description {
+.slides {
+  display: flex;
+}
+
+.text {
   text-align: center;
+  font-size: 30px;
   color: #FFFFFF;
+  padding-bottom: 2rem;
 }
 
 .dots {

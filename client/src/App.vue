@@ -1,19 +1,8 @@
 <template>
   <div id="app">
-    <NavigationBar/>
     <router-view />
   </div>
 </template>
-
-<script lang="ts">
-import NavigationBar from '@/components/NavigationBar.vue'
-
-export default {
-  components: {
-    NavigationBar
-  }
-}
-</script>
 
 <style>
 @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,700&display=swap");
@@ -26,6 +15,5 @@ export default {
 
 #app {
   font-family: "Poppins", sans-serif;
-  background-image: linear-gradient(to bottom right, #171717, #1B1B1B, #1D1D1D, #1E1E1E, #000000);
 }
 </style>
