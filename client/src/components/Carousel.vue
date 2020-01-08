@@ -1,8 +1,10 @@
 <template>
   <div class="carousel">
-    <div class="slides">
-      <carousel-item v-for="(slide, index) in slides" :key="index" :imageSrc="slide.image"></carousel-item>
-    </div>
+    <transition name="fade" mode="out-in">
+      <div class="slides" :key="carousel-item">
+        <carousel-item v-for="(slide, index) in slides.slice(previousIndex, nextIndex + 1)" :key="index" :imageSrc="slide.image" :backgroundSrc="slide.background" :show="index === slideIndex ? true : false"></carousel-item>
+      </div>
+    </transition>
     <transition name="fade" mode="out-in">
       <h3 :key="currentDescription" class="text">{{ currentDescription }}</h3>
     </transition>
@@ -22,25 +24,40 @@ import CarouselItem from '@/components/CarouselItem.vue'
   }
 })
 export default class Carousel extends Vue {
-    slideIndex: number = 1;
+    previousIndex = 0
+    slideIndex = 1
+    nextIndex = 2
     slides = [
       {
         'image': require('@/assets/GrandTourer.svg'),
+        'background': require('@/assets/OrangeEffect.svg'),
         'description': 'Grand Tourer'
       },
       {
         'image': require('@/assets/Sedan.svg'),
+        'background': require('@/assets/BlueEffect.svg'),
         'description': 'Sedan'
       },
       {
         'image': require('@/assets/SUV.svg'),
+        'background': require('@/assets/PinkEffect.svg'),
         'description': 'SUV'
       }
-    ];
-    currentDescription: string = this.slides[this.slideIndex].description;
+    ]
+    currentDescription = this.slides[this.slideIndex].description
 
     show (index: number) {
       this.slideIndex = index
+      this.previousIndex = this.slideIndex - 1
+      this.nextIndex = this.slideIndex + 1
+      if (this.slideIndex === 0) {
+        this.previousIndex = 0
+      }
+
+      if (this.slideIndex === (this.slides.length - 1)) {
+        this.nextIndex = this.slides.length - 1
+      }
+
       this.currentDescription = this.slides[this.slideIndex].description
     }
 }
