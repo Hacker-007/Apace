@@ -1,18 +1,23 @@
 <template>
-  <div class="splash">
-    <navigation-bar />
-    <carousel />
+  <div>
+    <!-- <div class="splash">
+      <navigation-bar logoColor="FFFFFF"/>
+      <carousel />
+    </div> -->
+    <car-section />
   </div>
 </template>
 
 <script lang="ts">
-import NavigationBar from '@/components/NavigationBar.vue'
-import Carousel from '@/components/Carousel.vue'
+// import NavigationBar from '@/components/NavigationBar.vue'
+// import Carousel from '@/components/Carousel.vue'
+import CarSection from '@/components/CarSection.vue'
 
 export default {
   components: {
-    NavigationBar,
-    Carousel
+    // NavigationBar,
+    // Carousel,
+    CarSection
   }
 }
 </script>
