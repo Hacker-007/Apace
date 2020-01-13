@@ -1,6 +1,5 @@
 <template>
   <div class="item">
-    <img class="itemBackground" :src="backgroundSrc" v-if="show">
     <img class="itemForeground" :src="imageSrc">
   </div>
 </template>
@@ -12,24 +11,24 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 export default class CarouselItem extends Vue {
     @Prop(String) imageSrc!: string
     @Prop(String) backgroundSrc!: string
-    @Prop(Boolean) show!: boolean
 }
 </script>
 
 <style>
 .item {
-  position: relative;
+  width: 700px;
+  height: 700px;
+  display: flex;
+  justify-content: center;
 }
 
-.itemBackground {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+.itemForeground {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
-.itemForeGround {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+.inactive {
+  cursor: pointer;
 }
 </style>

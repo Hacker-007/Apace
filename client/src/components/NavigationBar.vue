@@ -1,10 +1,10 @@
 <template>
   <nav>
-    <div :style="{ color: logoColor }">
-      <h1>Apace</h1>
+    <div class="logo">
+      <h1>APACE</h1>
     </div>
     <ul class="links">
-      <li v-for="(link, index) in links" :key="index"><router-link :to="link.link" :style="{ color: logoColor }"><strong>{{ link.name }}</strong></router-link></li>
+      <li v-for="(link, index) in links" :key="index"><router-link :to="link.link"><strong>{{ link.name }}</strong></router-link></li>
     </ul>
   </nav>
 </template>
@@ -14,7 +14,6 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
 export default class NavigationBar extends Vue {
-  @Prop(String) logoColor!: string
   links = [
     {
       name: 'About',
@@ -45,6 +44,10 @@ nav {
   width: 20%;
   display: flex;
   justify-content: space-between;
+}
+
+.logo {
+  color: #FFFFFF;
 }
 
 a {

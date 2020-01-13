@@ -1,15 +1,25 @@
 <template>
   <div class="carousel">
-    <transition name="fade" mode="out-in">
-      <div class="slides" :key="carousel-item">
-        <carousel-item v-for="(slide, index) in slides.slice(previousIndex, nextIndex + 1)" :key="index" :imageSrc="slide.image" :backgroundSrc="slide.background" :show="index === slideIndex ? true : false"></carousel-item>
+      <div class="slides">
+        <carousel-item v-for="(slide, index) in slides"
+                       :key="index"
+                       :imageSrc="slide.image"
+                       :backgroundSrc="slide.background"
+                       :id="'slide' + index"
+                       :class="{inactive: slideIndex !== index}"
+                       @click="show(index)">
+        </carousel-item>
       </div>
-    </transition>
     <transition name="fade" mode="out-in">
       <h3 :key="currentDescription" class="text">{{ currentDescription }}</h3>
     </transition>
     <div class="dots">
-      <span v-for="(slide, index) in this.slides" :key="index" class="dot" @click="show(index)"></span>
+      <span v-for="(slide, index) in this.slides"
+            :key="index"
+            class="dot"
+            :class="{active: slideIndex === index}"
+            @click="show(index)">
+      </span>
     </div>
   </div>
 </template>
@@ -17,6 +27,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import CarouselItem from '@/components/CarouselItem.vue'
+import { gsap } from 'gsap'
 
 @Component({
   components: {
@@ -24,9 +35,7 @@ import CarouselItem from '@/components/CarouselItem.vue'
   }
 })
 export default class Carousel extends Vue {
-    previousIndex = 0
     slideIndex = 1
-    nextIndex = 2
     slides = [
       {
         'image': require('@/assets/GrandTourer.svg'),
@@ -47,27 +56,24 @@ export default class Carousel extends Vue {
     currentDescription = this.slides[this.slideIndex].description
 
     show (index: number) {
+      let factor = 1100 * (index - this.slideIndex)
+
+      if (gsap.isTweening('.item')) {
+        TweenMax.killChildTweensOf('.item')
+      }
+
+      gsap.to('.item', { x: `-=${factor}`, duration: 0.8 })
+
       this.slideIndex = index
-      this.previousIndex = this.slideIndex - 1
-      this.nextIndex = this.slideIndex + 1
-      if (this.slideIndex === 0) {
-        this.previousIndex = 0
-      }
-
-      if (this.slideIndex === (this.slides.length - 1)) {
-        this.nextIndex = this.slides.length - 1
-      }
-
-      this.currentDescription = this.slides[this.slideIndex].description
+      this.currentDescription = this.slides[index].description
     }
 }
 </script>
 
 <style>
-
 .fade-enter-active,
 .fade-leave-active {
-  transition: all .3s;
+  transition: all 1s;
 }
 
 .fade-enter,
@@ -78,35 +84,53 @@ export default class Carousel extends Vue {
 .carousel {
   width: 100%;
   display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
-  justify-contents: center;
+  justify-content: center;
   overflow: hidden;
 }
 
 .slides {
   display: flex;
+  width: 100%;
 }
 
 .text {
   text-align: center;
-  font-size: 30px;
+  font-size: 40px;
   color: #FFFFFF;
   padding-bottom: 2rem;
 }
 
 .dots {
-  text-align: center;
+  width: 100px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .dot {
   cursor: pointer;
-  height: 15px;
-  width: 15px;
+  height: 10px;
+  width: 10px;
   margin: 0 2px;
-  background-color: #bbb;
+  background-color: white;
   border-radius: 50%;
   display: inline-block;
-  transition: background-color 0.6s ease;
+  transition: background-color .3s ease;
+}
+
+.active {
+  background-color: #D26BFF;
+}
+
+#slide0 {
+  position: relative;
+  right: 25%;
+}
+
+#slide2 {
+  position: relative;
+  left: 25%;
 }
 </style>

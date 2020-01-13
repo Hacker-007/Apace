@@ -13,6 +13,10 @@
   padding: 0;
 }
 
+html, body {
+  height: 100%;
+}
+
 #app {
   font-family: "Poppins", sans-serif;
 }
