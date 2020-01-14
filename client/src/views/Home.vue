@@ -1,7 +1,7 @@
 <template>
   <main>
-    <div class="splash">
-      <navigation-bar :logoColor="white"/>
+    <div class="hero">
+      <navigation-bar />
       <carousel />
     </div>
     <car-section />
@@ -10,8 +10,8 @@
 
 <script lang="ts">
 import Carousel from '@/components/Carousel.vue'
-import CarSection from '@/components/CarSection'
-import NavigationBar from '@/components/NavigationBar'
+import CarSection from '@/components/CarSection.vue'
+import NavigationBar from '@/components/NavigationBar.vue'
 
 export default {
   components: {
@@ -23,7 +23,13 @@ export default {
 </script>
 
 <style>
-.splash {
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.hero {
   display: flex;
   flex-direction: column;
   min-height: 100vh;

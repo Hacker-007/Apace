@@ -59,7 +59,7 @@ export default class Carousel extends Vue {
       let factor = 1100 * (index - this.slideIndex)
 
       if (gsap.isTweening('.item')) {
-        TweenMax.killChildTweensOf('.item')
+        gsap.killTweensOf('.item')
       }
 
       gsap.to('.item', { x: `-=${factor}`, duration: 0.8 })
@@ -106,7 +106,8 @@ export default class Carousel extends Vue {
 .dots {
   width: 100px;
   display: flex;
-  justify-content: space-evenly;
+  align-items: center;
+  justify-content: center;
 }
 
 .dot {

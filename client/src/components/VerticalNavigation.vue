@@ -40,6 +40,7 @@ export default class VerticalNavigation extends Vue {
 
     change (index) {
       this.selectedTabIndex = index
+      this.$emit('tabChanged', this.selectedTabIndex)
     }
 }
 </script>
