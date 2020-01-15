@@ -4,7 +4,7 @@
       <navigation-bar />
       <carousel />
     </div>
-    <car-section />
+    <car-section class="car-section"/>
   </main>
 </template>
 
@@ -33,6 +33,10 @@ main {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-image: linear-gradient(to bottom right, #171717, #1B1B1B, #1D1D1D, #1E1E1E, #000000);
+}
+
+.car-section {
   background-image: linear-gradient(to bottom right, #171717, #1B1B1B, #1D1D1D, #1E1E1E, #000000);
 }
 </style>

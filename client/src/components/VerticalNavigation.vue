@@ -2,7 +2,7 @@
     <div>
       <transition-group class="navigation" name="list" tag="div">
         <div v-for="tab in tabs" :key="tab.width" class="tab">
-            <h3 v-if="tab.index === selectedTabIndex" class="caption">{{ tab.name }}</h3>
+            <p v-if="tab.index === selectedTabIndex" class="caption"><b>{{ tab.name }}</b></p>
             <h1 v-else class="line" :style="{ width: tab.width + 'px' }" @click="change(tab.index)"></h1>
         </div>
       </transition-group>
@@ -51,6 +51,7 @@ export default class VerticalNavigation extends Vue {
   flex-direction: column;
   justify-content: space-between;
   height: 100px;
+  max-width: 100px;
   margin-left: 10px;
 }
 
@@ -65,13 +66,13 @@ h1 {
 
 .caption {
   text-align: right;
-  font-size: 20px;
+  font-size: 17px;
   display: inline-block;
-  color: black;
+  color: white;
 }
 
 .line {
-  border-bottom: 5px solid black;
+  border-bottom: 5px solid white;
   cursor: pointer;
   float: right;
 }

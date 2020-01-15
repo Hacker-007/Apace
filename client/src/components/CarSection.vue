@@ -1,14 +1,20 @@
 <template>
-    <div class="car-section">
-      <div v-if="selectedIndex == 0"><h1>0</h1></div>
-      <div v-else-if="selectedIndex == 1"><h1>1</h1></div>
-      <div v-else-if="selectedIndex == 2"><h1>2</h1></div>
-      <div v-else class="cards">
-        <card title="Closest Competitor" price="42,985" text="lorem ipsum" :showBuyNow="false"></card>
-        <card title="Apace Sedan" price="29,999" text="lorem ipsum" :showBuyNow="true"></card>
-      </div>
-      <vertical-navigation @tabChanged="changeContent" />
+  <div class="car-section">
+    <div v-if="selectedIndex == 0">
+      <h1>0</h1>
     </div>
+    <div v-else-if="selectedIndex == 1">
+      <h1>1</h1>
+    </div>
+    <div v-else-if="selectedIndex == 2">
+      <h1>2</h1>
+    </div>
+    <div v-else class="cards">
+      <card title="Closest Competitor" price="42,985" text="lorem ipsum" :showBuyNow="false"></card>
+      <card title="Apace Sedan" price="29,999" text="lorem ipsum" :showBuyNow="true"></card>
+    </div>
+    <vertical-navigation @tabChanged="changeContent" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -23,7 +29,7 @@ import Card from '@/components/Card.vue'
   }
 })
 export default class CarSection extends Vue {
-  selectedIndex = 0
+  selectedIndex = 3
 
   changeContent (newIndex: number) {
     this.selectedIndex = newIndex
@@ -33,14 +39,13 @@ export default class CarSection extends Vue {
 
 <style>
 .car-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 2rem;
 }
 
 .cards {
   display: flex;
-  justify-content: space-between;
+  justify-content: center space-around;
+  align-items: center;
+  margin-bottom: 5rem;
 }
 </style>
