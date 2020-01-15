@@ -2,7 +2,7 @@
     <div>
       <transition-group class="navigation" name="list" tag="div">
         <div v-for="tab in tabs" :key="tab.width" class="tab">
-            <h1 v-if="tab.index === selectedTabIndex">{{ tab.name }}</h1>
+            <h3 v-if="tab.index === selectedTabIndex" class="caption">{{ tab.name }}</h3>
             <h1 v-else class="line" :style="{ width: tab.width + 'px' }" @click="change(tab.index)"></h1>
         </div>
       </transition-group>
@@ -18,13 +18,13 @@ export default class VerticalNavigation extends Vue {
     tabs = [
       {
         index: 0,
-        name: 'Our Roots',
-        width: 175
+        name: 'Beautiful Design',
+        width: 15
       },
       {
         index: 1,
-        name: 'Eco-Friendly',
-        width: 135
+        name: 'Eco Friendly',
+        width: 55
       },
       {
         index: 2,
@@ -33,8 +33,8 @@ export default class VerticalNavigation extends Vue {
       },
       {
         index: 3,
-        name: 'Purchase',
-        width: 55
+        name: 'Competitive Pricing',
+        width: 115
       }
     ]
 
@@ -63,8 +63,16 @@ h1 {
   padding: 0;
 }
 
+.caption {
+  text-align: right;
+  font-size: 20px;
+  display: inline-block;
+  color: black;
+}
+
 .line {
   border-bottom: 5px solid black;
   cursor: pointer;
+  float: right;
 }
 </style>
