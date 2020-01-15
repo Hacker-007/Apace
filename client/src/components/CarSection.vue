@@ -42,5 +42,12 @@ export default class CarSection extends Vue {
 .cards {
   display: flex;
   justify-content: space-between;
+  justify-content: center space-around;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+.price {
+  font-size: 8rem;
 }
 </style>
