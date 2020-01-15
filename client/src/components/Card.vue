@@ -5,7 +5,7 @@
         <div class="container">
             <h4><b>{{ text }}</b></h4>
         </div>
-        <button v-if="showBuyNow">Buy Now</button>
+        <button v-if="showBuyNow">Buy</button>
     </div>
 </template>
 
