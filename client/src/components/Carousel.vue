@@ -1,106 +1,78 @@
 <template>
-  <div class="carousel">
-      <div class="slides">
-        <carousel-item v-for="(slide, index) in slides"
-                       :key="index"
-                       :imageSrc="slide.image"
-                       :backgroundSrc="slide.background"
-                       :id="'slide' + index"
-                       :class="{inactive: slideIndex !== index}"
-                       @click="show(index)">
-        </carousel-item>
-      </div>
-    <transition name="fade" mode="out-in">
-      <h3 :key="currentDescription" class="text">{{ currentDescription }}</h3>
-    </transition>
-    <div class="dots">
-      <span v-for="(slide, index) in this.slides"
-            :key="index"
-            class="dot"
-            :class="{active: slideIndex === index}"
-            @click="show(index)">
-      </span>
-    </div>
-  </div>
+  <b-carousel
+    id="carousel-1"
+    :interval="0"
+    controls
+    indicators
+    background="transparent"
+    style="text-shadow: 1px 2px 2px #333;"
+  >
+    <b-carousel-slide v-for="(slide, index) in slides"
+      :key="index"
+      :caption="slide.description"
+      :img-src="slide.image"
+      :class="{ smaller: slide.description === 'Grand Tourer' }"
+      >
+    </b-carousel-slide>
+  </b-carousel>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import CarouselItem from '@/components/CarouselItem.vue'
-import { gsap } from 'gsap'
 
-@Component({
-  components: {
-    CarouselItem
-  }
-})
+@Component
 export default class Carousel extends Vue {
-    slideIndex = 1
     slides = [
       {
-        'image': require('@/assets/GrandTourer.svg'),
-        'background': require('@/assets/OrangeEffect.svg'),
+        'image': require('@/assets/GrandTourer.png'),
         'description': 'Grand Tourer'
       },
       {
-        'image': require('@/assets/Sedan.svg'),
-        'background': require('@/assets/BlueEffect.svg'),
+        'image': require('@/assets/Sedan.png'),
         'description': 'Sedan'
       },
       {
-        'image': require('@/assets/SUV.svg'),
-        'background': require('@/assets/PinkEffect.svg'),
+        'image': require('@/assets/SUV.png'),
         'description': 'SUV'
       }
     ]
-    currentDescription = this.slides[this.slideIndex].description
-
-    show (index: number) {
-      let factor = 1100 * (index - this.slideIndex)
-
-      if (gsap.isTweening('.item')) {
-        gsap.killTweensOf('.item')
-      }
-
-      gsap.to('.item', { x: `-=${factor}`, duration: 0.8 })
-
-      this.slideIndex = index
-      this.currentDescription = this.slides[index].description
-    }
 }
 </script>
 
 <style>
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 1s;
+@media (max-width: 500px) {
+  .smaller > img {
+    width: 95% !important;
+  }
 }
 
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
+@media (max-width: 1024px) {
+  .carousel-control-prev, .carousel-control-next {
+    display: none;
+  }
 }
 
-.carousel {
+.carousel-inner {
   width: 100%;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  height: 93vh !important;
 }
 
-.slides {
-  display: flex;
-  width: 100%;
+.carousel-inner > .carousel-item {
+  position: relative;
+  height: 100%;
 }
 
-.text {
-  text-align: center;
-  font-size: 40px;
-  color: #FFFFFF;
-  padding-bottom: 2rem;
+.carousel-inner > .carousel-item > img {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60% !important;
+  object-fit: contain !important;
+}
+
+.smaller > img {
+  width: 70%;
+  margin: auto;
 }
 
 .dots {
@@ -123,15 +95,5 @@ export default class Carousel extends Vue {
 
 .active {
   background-color: #D26BFF;
-}
-
-#slide0 {
-  position: relative;
-  right: 25%;
-}
-
-#slide2 {
-  position: relative;
-  left: 25%;
 }
 </style>

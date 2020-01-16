@@ -1,12 +1,12 @@
 <template>
-    <div>
-      <transition-group class="navigation" name="list" tag="div">
-        <div v-for="tab in tabs" :key="tab.width" class="tab">
-            <p v-if="tab.index === selectedTabIndex" class="caption"><b>{{ tab.name }}</b></p>
-            <h1 v-else class="line" :style="{ width: tab.width + 'px' }" @click="change(tab.index)"></h1>
-        </div>
-      </transition-group>
-    </div>
+  <div>
+    <transition-group class="navigation" name="list" tag="div">
+      <div v-for="tab in tabs" :key="tab.width" class="tab">
+          <p v-if="tab.index === selectedTabIndex" class="caption"><b>{{ tab.name }}</b></p>
+          <h1 v-else class="line" :style="{ width: tab.width + 'px' }" @click="change(tab.index)"></h1>
+      </div>
+    </transition-group>
+  </div>
 </template>
 
 <script>
@@ -55,13 +55,16 @@ export default class VerticalNavigation extends Vue {
   margin-left: 10px;
 }
 
-.list-move {
-  transition: transform 1s;
+/*.list-enter-active, .list-leave-active {
+
 }
 
-h1 {
-  margin: 0;
-  padding: 0;
+.list-enter, .list-leave-to {
+
+}*/
+
+.list-move {
+  transition: transform 1s;
 }
 
 .caption {
@@ -75,5 +78,7 @@ h1 {
   border-bottom: 5px solid white;
   cursor: pointer;
   float: right;
+  margin: 0;
+  padding: 0;
 }
 </style>
