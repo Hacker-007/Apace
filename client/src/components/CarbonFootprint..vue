@@ -36,8 +36,26 @@ export default class CarbonFootprint extends Vue {
 </script>
 
 <style>
+@media (max-width: 576px) {
+  .metrics {
+    flex-direction: column !important;
+  }
+
+  .metric-title {
+    font-size: 20px !important;
+  }
+
+  .metric-amount {
+    font-size: 45px !important;
+  }
+
+  .metric-time {
+    font-size: 15px !important;
+  }
+}
+
 .carbon-footprint {
-  min-height: 100vh;
+  height: 100vh;
   max-width: 100vw;
   display: flex;
   flex-direction: column;
@@ -68,7 +86,7 @@ export default class CarbonFootprint extends Vue {
 }
 
 .gray-box {
-    background-color: #515151;
+    background-color: rgba(81, 81, 81, 0.34);
 }
 
 .metric-amount {

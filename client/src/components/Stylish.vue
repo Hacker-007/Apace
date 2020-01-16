@@ -2,7 +2,7 @@
   <div class="stylish-background">
     <img src="../assets/BlueCar.png" class="blue-car">
     <div class="stylish-container">
-      <h2 class="stylish-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h2>
+      <h2 class="stylish-text">Our cars are created with precision, craftsmanship, and performance. We strive to create the perfect vehicle for all people with excellent quality, durablity, and performace, all at an affordable price.</h2>
     </div>
   </div>
 </template>

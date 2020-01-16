@@ -55,14 +55,6 @@ export default class VerticalNavigation extends Vue {
   margin-left: 10px;
 }
 
-/*.list-enter-active, .list-leave-active {
-
-}
-
-.list-enter, .list-leave-to {
-
-}*/
-
 .list-move {
   transition: transform 1s;
 }
@@ -80,5 +72,10 @@ export default class VerticalNavigation extends Vue {
   float: right;
   margin: 0;
   padding: 0;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
 }
 </style>

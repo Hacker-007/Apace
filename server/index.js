@@ -9,7 +9,7 @@ const carRoutes = require('./routes/car')
 dotenv.config()
 
 mongoose.connect(
-	process.env.DB_CONNECT,
+	'mongodb+srv://revanthpothukuchi123@gmail.com:AZSZnrmr89R!R!@apace-zpvel.mongodb.net/test?retryWrites=true&w=majority',
 	{
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
@@ -20,6 +20,11 @@ mongoose.connect(
 app.use(express.json())
 app.use('/api/user', authRoutes)
 app.use('/api/car', carRoutes)
+
+if(process.env.NODE_ENV === 'production') {
+	app.use(express.static(__dirname + '/public/'))
+	app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'))
+}
 
 app.listen(port, preLoadData())
 

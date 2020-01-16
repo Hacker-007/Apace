@@ -60,7 +60,7 @@ router.post('/login', async (req, res) => {
         return res.status(400).send('Invalid Information.')
     }
 
-    const token = jwt.sign({ id: user._id, name: user.name, roles: user.roles }, process.env.TOKEN_SECRET)
+    const token = jwt.sign({ id: user._id, name: user.name, roles: user.roles }, '$%ah1jqt@v^!*2(#')
 
     res.status(200).send({ token })
 })

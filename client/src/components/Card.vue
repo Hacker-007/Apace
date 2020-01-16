@@ -1,5 +1,5 @@
 <template>
-  <div class="car-box">
+  <div class="card-box">
     <h2 class="title">{{ title }}</h2>
     <b-card
       :title="'$' + price"
@@ -27,11 +27,19 @@ export default class Card extends Vue {
 </script>
 
 <style>
+@media screen and (max-width: 576px) {
+  .card-body {
+    height: 40vh;
+    width: 15rem;
+  }
+}
+
 .card-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0px 2rem;
 }
 
 .title {
@@ -43,10 +51,11 @@ export default class Card extends Vue {
 .card {
   border: black solid 0px;
   border-radius: 0rem;
-  width: 20rem;
 }
 
 .card-body {
+  height: 60vh;
+  width: 30rem;
   background-image: linear-gradient(to bottom right, #525252, #828282);
 }
 
@@ -60,6 +69,7 @@ export default class Card extends Vue {
 .card-text {
   padding-top: 1rem;
   color: white;
+  font-size: 2rem;
   text-align: center;
 }
 </style>
